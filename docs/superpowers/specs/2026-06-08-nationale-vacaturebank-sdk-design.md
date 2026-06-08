@@ -126,7 +126,7 @@ ContractType (string)
 CareerLevel (string)
 Categories (string[])
 Industries (string[])
-StartDate, EndDate (type TBD — make a real API call during implementation to determine the format, then use `DateOnly`, `DateTimeOffset`, or `string` accordingly)
+StartDate, EndDate (DateTimeOffset? — API returns ISO 8601 datetime with UTC timezone, e.g. "2026-04-12T22:00:00Z")
 Status (string)
 WorkingHours: { Min, Max }
 ```
