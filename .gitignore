@@ -1,0 +1,9 @@
+bin/
+obj/
+nupkg/
+*.nupkg
+.vs/
+.idea/
+*.user
+CLAUDE.md
+docs/
