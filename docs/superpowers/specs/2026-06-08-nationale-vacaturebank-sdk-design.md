@@ -126,7 +126,7 @@ ContractType (string)
 CareerLevel (string)
 Categories (string[])
 Industries (string[])
-StartDate, EndDate (string — raw value from API; format not documented)
+StartDate, EndDate (type TBD — make a real API call during implementation to determine the format, then use `DateOnly`, `DateTimeOffset`, or `string` accordingly)
 Status (string)
 WorkingHours: { Min, Max }
 ```
