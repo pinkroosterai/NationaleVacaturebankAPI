@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NationaleVacaturebank.Client/NationaleVacaturebank.Client.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NationaleVacaturebank.Client.Tests.Integration/NationaleVacaturebank.Client.Tests.Integration.csproj" />
+    <Project Path="tests/NationaleVacaturebank.Client.Tests.Unit/NationaleVacaturebank.Client.Tests.Unit.csproj" />
+  </Folder>
+</Solution>
