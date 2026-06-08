@@ -5,3 +5,5 @@ nupkg/
 .vs/
 .idea/
 *.user
+CLAUDE.md
+docs/
