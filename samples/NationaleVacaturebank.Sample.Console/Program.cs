@@ -5,7 +5,7 @@ using NationaleVacaturebank.Client.Client;
 using NationaleVacaturebank.Client.Exceptions;
 using NationaleVacaturebank.Client.Extensions;
 
-var host = Host.CreateDefaultBuilder(args)
+using var host = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(logging => logging.ClearProviders())
     .ConfigureServices(services => services.AddNationaleVacaturebank())
     .Build();
@@ -26,7 +26,13 @@ try
 
     var page = await builder.GetPageAsync(limit: 10);
 
-    Console.WriteLine($"\nFound {page.Total} jobs. Showing first {page.Jobs.Count}:");
+    if (page.Total == 0)
+    {
+        Console.WriteLine("No jobs found.");
+        return;
+    }
+
+    Console.WriteLine($"\nFound {page.Total} jobs. Showing {page.Jobs.Count} result(s):");
     foreach (var job in page.Jobs)
     {
         var company = job.Company?.Name ?? "(no company)";
