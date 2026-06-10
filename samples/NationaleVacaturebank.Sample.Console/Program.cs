@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using NationaleVacaturebank.Client.Client;
 using NationaleVacaturebank.Client.Exceptions;
 using NationaleVacaturebank.Client.Extensions;
+using Spectre.Console;
 
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(logging => logging.ClearProviders())
@@ -32,12 +33,28 @@ try
         return;
     }
 
-    Console.WriteLine($"\nFound {page.Total} jobs. Showing {page.Jobs.Count} result(s):");
+    Console.WriteLine($"\nFound {page.Total} jobs. Showing {page.Jobs.Count} result(s):\n");
+
+    var table = new Table();
+    table.AddColumn("Title");
+    table.AddColumn("Company");
+    table.AddColumn("Salary");
+    table.AddColumn("Contract Type");
+    table.AddColumn("Career Level");
+
     foreach (var job in page.Jobs)
     {
-        var company = job.Company?.Name ?? "(no company)";
-        Console.WriteLine($"  {job.Title} @ {company}");
+        var salary = job.Salary is { } s ? $"€{s.Min:N0}–€{s.Max:N0}" : "—";
+        table.AddRow(
+            new Text(job.Title),
+            new Text(job.Company?.Name ?? "—"),
+            new Text(salary),
+            new Text(job.ContractType ?? "—"),
+            new Text(job.CareerLevel ?? "—")
+        );
     }
+
+    AnsiConsole.Write(table);
 }
 catch (VacaturebankValidationException ex)
 {
