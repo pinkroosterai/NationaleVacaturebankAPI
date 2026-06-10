@@ -17,9 +17,3 @@ public sealed record Job
     public string? Status { get; init; }
     public WorkingHoursRange? WorkingHours { get; init; }
 }
-
-public sealed record JobCompany(string? Name, string? Website, string? Slug, string? Type);
-
-public sealed record SalaryRange(int Min, int Max);
-
-public sealed record WorkingHoursRange(int Min, int Max);
